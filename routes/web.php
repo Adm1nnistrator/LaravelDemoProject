@@ -43,16 +43,27 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/admin/addcategory', 'AddCategory')->name('Add Category');
         Route::post('/admin/storecategory', 'StoreCategory')->name('storecategory');
         Route::get('/admin/editcategory/{id}', 'EditCategory')->name('editcategory');
+        Route::post('/admin/updatecategory', 'UpdateCategory')->name('updatecategory');
+        Route::get('/admin/deletecategory/{id}','DeleteCategory')->name('deletecategory');
     });
 
     Route::controller(SubCategoryController::class)->group(function () {
         Route::get('/admin/subcategories', 'Home')->name('All SubCategories');
-        Route::get('/admin/addsubcategory', 'AddSubCategory')->name('Add SubCategory');
+        Route::get('/admin/addsubcategory', 'AddSubCategory')->name('Add SubCategory');        
+        Route::post('/admin/storesubcategory', 'StoreSubCategory')->name('storesubcategory');
+        Route::get('/admin/editsubcategory/{id}', 'EditSubCategory')->name('editsubcategory');
+        Route::post('/admin/updatesubcategory', 'UpdateSubCategory')->name('updateSubCate');
+        Route::get('/admin/deletesubcategory/{id}','DeleteSubCategory')->name('deletesubcategory');
+        
     });
 
     Route::controller(ProductController::class)->group(function () {
         Route::get('/admin/products', 'Home')->name('All Products');
         Route::get('/admin/addproduct', 'AddProduct')->name('Add Product');
+        Route::post('/admin/storeproduct', 'StoreProduct')->name('storeproduct');
+        Route::get('/admin/editproduct/{id}', 'EditProduct')->name('editproduct');
+        Route::post('/admin/updateproduct', 'UpdateProduct')->name('updateproduct');
+        Route::get('/admin/deleteproduct/{id}','DeleteProduct')->name('deleteproduct');
     });
 
     Route::controller(OrderController::class)->group(function () {

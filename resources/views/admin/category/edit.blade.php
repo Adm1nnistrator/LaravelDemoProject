@@ -21,18 +21,15 @@ $old_name = $category_info->category_name;
       </div>
       @endif
       <h4 class="card-title text-center">Edit Category</h4>
-      <form method="post" action="{{ route('storecategory') }}">
+      <form method="POST" action="{{ route('updatecategory') }}">
         @csrf
+        <input type="hidden" value="{{ $category_info->id }}" name="category_id">
         <div class="mb-3">
-          <label for="oldname" class="form-label">Category Current Name:</label>
-          <label for="category_old_name" class="form-label"><?php echo $old_name; ?></label>
+          <label for="name" class="form-label">Category Name:</label>
+          <input type="text" id="category_name" name="category_name"
+           class="form-control" required value="{{ $old_name }}">
         </div>
-
-        <div class="mb-3">
-          <label for="name" class="form-label">Category New Name:</label>
-          <input type="text" id="category_name" name="category_name" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Add Category</button>
+        <button type="submit" class="btn btn-primary">Update Category</button>
       </form>
     </div>
   </div>

@@ -34,13 +34,13 @@ Categories Info
                      <td>{{ $loop->iteration }}</td>
                      <td>{{ $category->category_name }}</td>
                      <td>{{ $category->subcategory_count}}</td>
-                     <td>{{ $category->subcategory_count}}</td>
+                     <td>{{ $category->product_count}}</td>
                      <td>{{ $category->slug }}</td>
                      <td>
                         <a href="{{ route('editcategory', $category->id) }}" class="btn btn-primary btn-sm">Edit</a>
                      </td>
                      <td>
-                        <a href="" class="btn btn-danger btn-sm">Delete</a>
+                        <a href="{{ route('deletecategory', $category->id) }}" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#deleteCategoryModal{{ $category->id }}">Delete</a>
                      </td>
                   </tr>
                   @endforeach
@@ -50,6 +50,47 @@ Categories Info
       </div>
    </div>
 </div>
+
+@foreach ($categories as $category)
+<div class="modal fade" id="deleteCategoryModal{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="deleteCategoryModalLabel{{ $category->id }}" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteCategoryModalLabel{{ $category->id }}">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to delete this category?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <a href="{{ route('deletecategory', $category->id) }}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+<script>
+    // JavaScript to handle the modal display
+    document.addEventListener('DOMContentLoaded', function () {
+        var deleteButtons = document.querySelectorAll('[data-toggle="modal"]');
+        
+        deleteButtons.forEach(function (button) {
+            button.addEventListener('click', function () {
+                var targetModalId = button.getAttribute('data-target').replace('#', '');
+                var targetModal = document.getElementById(targetModalId);
+                if (targetModal) {
+                    var modal = new bootstrap.Modal(targetModal);
+                    modal.show();
+                }
+            });
+        });
+    });
+</script>
+
+
 @endsection
 
 @section('breadcrumb')
