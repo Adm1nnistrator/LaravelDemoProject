@@ -46,44 +46,52 @@ Follow these steps to set up the project after cloning it from the [GitHub repos
 - [MySQL](https://www.mysql.com/) or other database
 
 ### Step 1: Clone the Repository
-
+```bash
 git clone https://github.com/Adm1nnistrator/LaravelDemoProject.git
+
 cd LaravelDemoProject
-
+```
 ### Step 2: Install Composer Dependencies
-
+```bash
 composer install
-
+```
 ### Step 3: Create a Copy of the Environment File
 Create a copy of the .env.example file and name it .env:
+```bash
 cp .env.example .env
-
+```
 Generate a new application key:
+```bash
 php artisan key:generate
-
+```
 ### Step 4: Configure the Database
 Open the .env file and configure the database settings:
+```bash
 DB_DATABASE=your_database_name
 DB_USERNAME=your_database_user    //example: root
 DB_PASSWORD=your_database_password
-
+```
 ### Step 5: Migrate and Seed the Database
+```bash
 php artisan migrate
 
 php artisan db:seed
+```
 
 ### Step 6: Install Node.js Dependencies
-
+```bash
 npm install
-
+```
 ### Step 7: Compile Assets
 
+```bash 
 npm run dev
+```
 
 ### Step 8: Run the Development Server
-
+```bash
 php artisan serve
-
+```
 ### Link to Admin dashboard
 http://localhost:/admin/dashboard
 ## Laravel Sponsors
