@@ -19,5 +19,6 @@ class Product extends Model
         'product_subcategory_id',
         'product_subcategory_name',
         'slug',
+        'quantity',
     ];
 }

@@ -20,25 +20,29 @@ New Product
          <h4 class="card-title text-center">Add New Product</h4>
          <form method="post" action="{{ route('storeproduct') }}" enctype="multipart/form-data">
             @csrf
-            <div class="mb-3">
-               <label for="product_name" class="form-label">Product Name:</label>
-               <input type="text" id="product_name" name="product_name" class="form-control" required>
+            <div class="form-group">
+               <label for="product_name" class="form-label">Product Name</label>
+               <input class="form-control" type="text" id="product_name" name="product_name">
             </div>
-            <div class="mb-3">
-               <label for="product_short_des" class="form-label">Product Short Description:</label>
-               <input type="text" id="product_short_des" name="product_short_des" class="form-control" required>
+
+            <div class="form-group">
+               <label for="product_short_des" class="form-label">Product Short Description</label>
+               <input class="form-control" type="text" id="product_short_des" name="product_short_des">
             </div>
-            <div class="mb-3">
-               <label for="product_long_des" class="form-label">Product Long Description:</label>
-               <input type="text" id="product_long_des" name="product_long_des" class="form-control" required>
+
+            <div class="form-group">
+               <label for="product_long_des" class="form-label">Product Long Description</label>
+               <input class="form-control" type="text" id="product_long_des" name="product_long_des">
             </div>
-            <div class="mb-3">
-               <label for="price" class="form-label">Product Price($):</label>
-               <input type="" id="price" name="price" class="form-control" required>
+
+            <div class="form-group">
+               <label for="price" class="form-label">Product Price</label>
+               <input class="form-control" type="text" id="price" name="price">
             </div>
-            <div class="mb-3">
-               <label for="quantity" class="form-label">Product Quantity:</label>
-               <input type="text" id="quantity" name="quantity" class="form-control" required>
+
+            <div class="form-group">
+               <label for="quantity" class="form-label">Product Quantity</label>
+               <input class="form-control" type="text" id="quantity" name="quantity">
             </div>
             <div class="mb-3">
                <label for="category_name" class="form-label">Category:</label>
