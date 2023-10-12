@@ -29,6 +29,63 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
+# Laravel Demo Project
+
+This is a simple Laravel demo project.
+
+## Installation
+
+Follow these steps to set up the project after cloning it from the [GitHub repository](https://github.com/Adm1nnistrator/LaravelDemoProject.git).
+
+### Prerequisites
+
+- [Composer](https://getcomposer.org/)
+- [PHP](https://www.php.net/)
+- [Node.js](https://nodejs.org/)
+- [NPM](https://www.npmjs.com/)
+- [MySQL](https://www.mysql.com/) or other database
+
+### Step 1: Clone the Repository
+
+git clone https://github.com/Adm1nnistrator/LaravelDemoProject.git
+cd LaravelDemoProject
+
+### Step 2: Install Composer Dependencies
+
+composer install
+
+### Step 3: Create a Copy of the Environment File
+Create a copy of the .env.example file and name it .env:
+cp .env.example .env
+
+Generate a new application key:
+php artisan key:generate
+
+### Step 4: Configure the Database
+Open the .env file and configure the database settings:
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_user    //example: root
+DB_PASSWORD=your_database_password
+
+### Step 5: Migrate and Seed the Database
+php artisan migrate
+
+php artisan db:seed
+
+### Step 6: Install Node.js Dependencies
+
+npm install
+
+### Step 7: Compile Assets
+
+npm run dev
+
+### Step 8: Run the Development Server
+
+php artisan serve
+
+### Link to Admin dashboard
+http://localhost:/admin/dashboard
 ## Laravel Sponsors
 
 We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
