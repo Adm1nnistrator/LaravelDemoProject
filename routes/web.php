@@ -4,8 +4,11 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\SaleController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Sales;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +24,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::controller(HomeController::class)->group(function(){
+    Route::get('/home', 'home')->name('home');
 });
 
 Route::get('/dashboard', function () {
@@ -69,6 +76,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(OrderController::class)->group(function () {
         Route::get('/admin/orders', 'Home')->name('All Orders');
         Route::get('/admin/addorder', 'AddOrder')->name('Add Order');
+    });
+    Route::controller(SaleController::class)->group(function () {
+        Route::get('/admin/sales', 'Home')->name('sales');
+        Route::get('/admin/addsales', 'AddSales')->name('addsale');
+        Route::post('/admin/storesale', 'StoreSale')->name('storesale');
     });
 });
 

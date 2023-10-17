@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SubCategory;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Sales;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rule;
@@ -15,7 +16,7 @@ class ProductController extends Controller
 {
     public function Home()
     {
-        $products = Product::get();
+        $products = Product::orderBy('product_category_name')->get();
         return view('admin.product.index', compact('products'));
     }
 

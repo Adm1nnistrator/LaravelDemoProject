@@ -5,6 +5,8 @@ New Product
 @endsection
 
 @section('content')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <div class="container mt-5">
    <div class="card">
       <div class="card-body">
@@ -46,7 +48,7 @@ New Product
             </div>
             <div class="mb-3">
                <label for="category_name" class="form-label">Category:</label>
-               <select class="form-select form-control input-group" id="category_id" name="category_id">
+               <select class="form-select form-control input-group" id="category_id" name="category_id" aria-label="Default select example">
                   <option value="-1" selected>Choose Category</option>
                   @foreach ($categories as $category)
                   <option value="{{ $category->id }}">{{ $category->category_name }}</option>
@@ -57,9 +59,6 @@ New Product
                <label for="subcategory_name" class="form-label">SubCategory:</label>
                <select class="form-select form-control input-group" id="subcategory_id" name="subcategory_id">
                   <option value="-1" selected>Choose SubCategory</option>
-                  @foreach ($subcategories as $subcategory)
-                  <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
-                  @endforeach
                </select>
             </div>
             <div class="mb-3">
@@ -71,6 +70,34 @@ New Product
       </div>
    </div>
 </div>
+
+<script>
+   $(document).ready(function() {
+      $('#category_id').on('change', function() {
+         var categoryId = $(this).val();
+         if (categoryId != -1) {
+            // Send an AJAX request to fetch subcategories for the selected category
+            $.ajax({
+               type: "GET",
+               url: "/get_subcategories.php?category_id=" + categoryId, // Replace with the correct path to your PHP script
+               success: function(data) {
+                  // Populate the subcategory select element with the received data
+                  $('#subcategory_id').empty();
+                  $('#subcategory_id').append('<option value="-1" selected>Choose SubCategory</option>');
+                  $.each(data, function(key, value) {
+                     $('#subcategory_id').append('<option value="' + value.id + '">' + value.subcategory_name + '</option>');
+                  });
+               }
+            });
+         } else {
+            // Reset the subcategory select when no category is selected
+            $('#subcategory_id').empty();
+            $('#subcategory_id').append('<option value="-1" selected>Choose SubCategory</option>');
+         }
+      });
+   });
+</script>
+
 @endsection
 
 @section('breadcrumb')
